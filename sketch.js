@@ -1,4 +1,4 @@
-let mic ;
+let mic;
 
 let y = 0;
 let x = 0;
@@ -13,16 +13,17 @@ let v3 = 0;
 let v4 = 0;
 let v5 = 0;
 let mul = 0.1;
-let recordPDF = false;
+
 let keepDraw = false;
 
 
 function setup() {
- let cnv=createCanvas(windowWidth, windowHeight);
- cnv.mousePressed(userStartAudio);
- mic = new p5.AudioIn();
- mic.start();
- 
+  let cnv = createCanvas(windowWidth, windowHeight);
+
+  cnv.mousePressed(userStartAudio);
+  mic = new p5.AudioIn();
+  mic.start();
+
 
 }
 
@@ -33,15 +34,16 @@ function draw() {
   rectMode(CENTER);
   fill(150);
 
- // if (keepDraw == true) {
+  if (mouseIsPressed === true) {
     x = x + (mouseX - x) * 0.05;
     y = y + (mouseY - y) * 0.05;
- // }
+  }
+
   translate(x, y);
   fill(255, v1);
 
   push();
-
+  fill(255 / vol);
   scale(vol * 50);
   beginShape(QUADS);
   vertex(-20 + v1, -20 + v1 * 0.6); //v1
@@ -67,9 +69,3 @@ function draw() {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
-// function mousePressed() {
-//   keepDraw=true;
-// }
-// function mouseReleased () {
-//   keepDraw=false;
-// }
